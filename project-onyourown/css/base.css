@@ -1,0 +1,593 @@
+/* ==========================================================
+   css/base.css
+   Formatting: fonts, colors, typography, components.
+   (Layout and media queries live in layout.css)
+   ========================================================== */
+
+/* ---------- Fonts (must be the first rule in the file) ---------- */
+/* Playfair Display = elegant headings, Poppins = clean body text */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@400;500;600&display=swap");
+
+/* ---------- design choices ---------- */
+:root {
+  --color-bg: #0f1226;
+  --color-surface: #1b1f3b;
+  --color-surface-2: #252a50;
+  --color-text: #e8e9f3;
+  --color-muted: #a3a8c7;
+  --color-primary: #7c5cff;
+  --color-accent: #ff7a59;
+  --color-accent-2: #2dd4bf;
+  --gradient: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  --radius: 1rem;
+  --shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
+  --font-body: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --font-heading: "Playfair Display", Georgia, serif;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 100%;              /* respects the user's browser setting */
+  line-height: 1.7;
+  color: var(--color-text);
+  /* Soft glowing color blobs behind the page */
+  background:
+    radial-gradient(circle at 10% 0%, rgba(124, 92, 255, 0.25), transparent 40%),
+    radial-gradient(circle at 90% 30%, rgba(255, 122, 89, 0.15), transparent 40%),
+    var(--color-bg);
+  background-attachment: fixed;
+}
+
+/* ---------- Typography (rem = relative to root font size) ---------- */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+/* Main headings use a gradient fill on the text */
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--color-accent-2);
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--color-accent-2);
+  text-underline-offset: 0.2em;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-accent);
+}
+
+/* Visible keyboard focus for accessibility */
+a:focus-visible {
+  outline: 0.15rem solid var(--color-accent);
+  outline-offset: 0.2rem;
+}
+
+/* ---------- Responsive images ---------- */
+img {
+  display: block;
+  max-width: 100%;   /* never wider than the container */
+  height: auto;      /* keeps the aspect ratio */
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+/* ---------- Header and navigation ---------- */
+.site-header {
+  background: rgba(15, 18, 38, 0.85);
+  border-bottom: 0.2rem solid transparent;
+  border-image: var(--gradient) 1;   /* gradient line under the header */
+  padding: 1rem;
+  text-align: center;
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.site-header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav buttons (replaced the old <a> links) */
+.site-header nav button {
+  display: block;
+  width: 100%;                   /* full-width rows on mobile */
+  font-family: inherit;          /* buttons don't inherit fonts by default */
+  font-size: 1rem;
+  color: var(--color-text);
+  font-weight: 500;
+  background: transparent;
+  border: none;                  /* remove the default browser button border */
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.site-header nav button:hover,
+.site-header nav button:focus-visible {
+  background: rgba(124, 92, 255, 0.25);
+  color: #fff;
+}
+
+/* Visible keyboard focus for accessibility */
+.site-header nav button:focus-visible {
+  outline: 0.15rem solid var(--color-accent);
+  outline-offset: 0.2rem;
+}
+
+/* Highlights the current page */
+.site-header nav button[aria-current="page"] {
+  background: var(--gradient);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- Home page ---------- */
+/* Intro banner with a gradient border look */
+.intro {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.2), rgba(255, 122, 89, 0.12));
+  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
+}
+
+.intro p {
+  color: var(--color-muted);
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+  border-bottom: 0.25rem solid var(--color-primary);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+/* Each card gets its own accent color */
+.card:nth-child(2) { border-bottom-color: var(--color-accent); }
+.card:nth-child(3) { border-bottom-color: var(--color-accent-2); }
+
+.card:hover {
+  transform: translateY(-0.35rem);
+}
+
+/* Card images are cropped to the same shape and zoom on hover */
+.card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.06);
+}
+
+.card figure {
+  overflow: hidden;          /* keeps the zoom inside the frame */
+  background: #000;
+}
+
+.card figcaption {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.card h2,
+.card p {
+  padding: 0 1.25rem;
+  color: var(--color-text);
+}
+
+.card h2 {
+  margin-top: 0.5rem;
+}
+
+.card p {
+  color: var(--color-muted);
+}
+
+/* Card button (replaced the old <a> wrapping each card) */
+.card-button {
+  display: block;
+  width: calc(100% - 2.5rem);    /* matches the card's 1.25rem side padding */
+  margin: 0.5rem 1.25rem 1.25rem;
+  padding: 0.6rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--gradient);
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card-button:hover,
+.card-button:focus-visible {
+  transform: translateY(-0.15rem);
+  box-shadow: var(--shadow);
+}
+
+.card-button:focus-visible {
+  outline: 0.15rem solid var(--color-accent-2);
+  outline-offset: 0.2rem;
+}
+
+/* ---------- Profile pages ---------- */
+.profile-header {
+  text-align: center;
+}
+
+.tagline {
+  color: var(--color-accent);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.profile-figure img {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 0.2rem solid var(--color-primary);
+  width: 100%;
+}
+
+.profile-bio p {
+  color: var(--color-text);
+}
+
+/* First letter of the bio gets a drop-cap style */
+.profile-bio p:first-of-type::first-letter {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  margin-right: 0.1em;
+}
+
+.profile-facts,
+.grid-item {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+}
+
+.profile-facts {
+  border-left: 0.3rem solid var(--color-accent-2);
+}
+
+dt {
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-2);
+}
+
+dd {
+  margin: 0 0 0.75rem;
+  color: var(--color-text);
+}
+
+/* Numbered works cards (counter is automatic) */
+.grid {
+  counter-reset: item;
+}
+
+.grid-item {
+  position: relative;
+  border-top: 0.25rem solid var(--color-primary);
+  transition: transform 0.25s, background 0.25s;
+}
+
+.grid-item:hover {
+  transform: translateY(-0.25rem);
+  background: var(--color-surface-2);
+}
+
+.grid-item::before {
+  counter-increment: item;
+  content: counter(item, decimal-leading-zero);
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  opacity: 0.8;
+}
+
+.grid-item h3 { margin-bottom: 0.25rem; }
+.grid-item p  { color: var(--color-muted); margin: 0; }
+
+/* ---------- Clock page ---------- */
+
+/* Clock items generated by js/modules/timeTools.js */
+.clock-item {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+  border-top: 0.25rem solid var(--color-primary);
+}
+
+/* Each clock item gets its own accent color */
+.clock-item:nth-child(2) { border-top-color: var(--color-accent); }
+.clock-item:nth-child(3) { border-top-color: var(--color-accent-2); }
+
+.clock-item h3 {
+  color: var(--color-accent-2);
+  font-size: 1.1rem;
+}
+
+.clock-item p {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0;
+  font-variant-numeric: tabular-nums;   /* digits keep equal width so the time doesn't jitter */
+}
+
+/* Older clock card styles (unused with the current timeTools.js; safe to delete) */
+.clock-card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+  border-top: 0.25rem solid var(--color-primary);
+}
+
+.clock-card:nth-child(2) { border-top-color: var(--color-accent); }
+.clock-card:nth-child(3) { border-top-color: var(--color-accent-2); }
+
+.clock-card h2 {
+  margin-bottom: 0.25rem;
+}
+
+.clock-date {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.clock-time {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Events page ---------- */
+.panel {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+}
+
+.panel h2 {
+  margin-bottom: 0.25rem;
+}
+
+.panel-hint {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+/* The area the mouse events happen in */
+.mouse-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--color-muted);
+  background: var(--color-surface-2);
+  border: 0.15rem dashed var(--color-primary);
+  border-radius: var(--radius);
+  cursor: crosshair;
+  user-select: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+/* Classes toggled by events.js */
+.mouse-area.is-inside {
+  border-color: var(--color-accent-2);
+  background: rgba(45, 212, 191, 0.12);
+}
+
+.mouse-area.is-down {
+  border-color: var(--color-accent);
+  background: rgba(255, 122, 89, 0.2);
+}
+
+.key-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-surface-2);
+  border: 0.15rem solid var(--color-primary);
+  border-radius: 2rem;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.key-input:focus {
+  outline: 0.15rem solid var(--color-accent-2);
+  outline-offset: 0.15rem;
+}
+
+/* Big display of the last key pressed */
+.key-display {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 1rem;
+  color: var(--color-accent);
+  min-height: 1.2em;
+}
+
+.readout {
+  margin: 0;
+}
+
+.readout dd {
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.5rem;
+}
+
+.panel-button {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--gradient);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4rem 1.25rem;
+  cursor: pointer;
+}
+
+.panel-button:focus-visible {
+  outline: 0.15rem solid var(--color-accent-2);
+  outline-offset: 0.2rem;
+}
+
+/* Event log list */
+.event-log {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.85rem;
+}
+
+.event-log li {
+  padding: 0.35rem 0.75rem;
+  border-left: 0.25rem solid var(--color-primary);
+  background: var(--color-surface-2);
+  margin-bottom: 0.25rem;
+}
+
+.event-log li.mouse-event { border-left-color: var(--color-accent-2); }
+.event-log li.key-event   { border-left-color: var(--color-accent); }
+
+/* ---------- Leap years page ---------- */
+/* List built by js/modules/timeTools.js */
+.leap-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.leap-year {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+  border-top: 0.25rem solid var(--color-primary);
+  transition: transform 0.25s, background 0.25s;
+}
+
+/* Colors rotate through the three accents */
+.leap-year:nth-child(3n + 2) { border-top-color: var(--color-accent); }
+.leap-year:nth-child(3n + 3) { border-top-color: var(--color-accent-2); }
+
+.leap-year:hover {
+  transform: translateY(-0.25rem);
+  background: var(--color-surface-2);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: rgba(15, 18, 38, 0.85);
+  border-top: 0.2rem solid transparent;
+  border-image: var(--gradient) 1;
+  color: var(--color-muted);
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.site-footer p { margin: 0; }
+
+/* ---------- Accessibility: respect "reduce motion" setting ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

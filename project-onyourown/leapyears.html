@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leap Years | My Favorites</title>
+
+  <!-- base.css = formatting, layout.css = layout + media queries -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <!-- Day.js is used by the time module to find the current year -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
+  <!-- nav.js = button navigation shared by every page -->
+  <script src="js/nav.js" defer></script>
+</head>
+<body>
+  <!-- Site header with button navigation (same on every page) -->
+  <header class="site-header">
+    <p class="site-title">My Favorites</p>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><button type="button" data-page="index.html">Home</button></li>
+        <li><button type="button" data-page="author.html">Author</button></li>
+        <li><button type="button" data-page="band.html">Band</button></li>
+        <li><button type="button" data-page="actor.html">Actor</button></li>
+        <li><button type="button" data-page="worldclock.html">World Clock</button></li>
+        <li><button type="button" data-page="events.html">Events</button></li>
+        <li><button type="button" data-page="leapyears.html" aria-current="page">Leap Years</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Upcoming Leap Years</h1>
+      <p>The leap years coming up in the next 100 years.</p>
+    </section>
+
+    <!-- leapyears.js inserts the list here -->
+    <div id="leap-output"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 My Favorites. Built for a responsive web design assignment.</p>
+  </footer>
+
+  <!-- Module script (modules are deferred automatically) -->
+  <script type="module" src="js/leapyears.js"></script>
+</body>
+</html>

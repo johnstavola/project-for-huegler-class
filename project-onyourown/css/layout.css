@@ -1,0 +1,208 @@
+/* ==========================================================
+   css/layout.css
+   Layout: grids, flexbox, and media queries (mobile first).
+   (Fonts, colors, and component styling live in base.css)
+   ========================================================== */
+
+/* ---------- 1. MOBILE (default) ---------- */
+
+main {
+  padding: 1rem;
+}
+
+/* Nav buttons stack vertically */
+.site-header nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Home page cards: one column */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Profile pages: everything stacked in one column */
+.profile {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Works grid: one column */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* World clock page: one column (container is built by js/modules/timeTools.js) */
+.clock-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Events page: panels stacked */
+.events-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Leap years page: two columns of year cards (list is built by js/modules/timeTools.js) */
+.leap-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* ---------- 2. TABLETS / SMALL DESKTOPS / LAPTOPS (768px+) ---------- */
+@media (min-width: 48em) {
+
+  main {
+    padding: 2rem;
+  }
+
+  h1 { font-size: 2.5rem; }
+
+  /* Header: title left, nav buttons in a row on the right */
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 1rem 2rem;
+  }
+
+  .site-title { margin: 0; }
+
+  .site-header nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;            /* seven buttons need room to wrap */
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  /* Buttons size to their content in a row (mobile uses full width) */
+  .site-header nav button {
+    width: auto;
+  }
+
+  /* Home page: first card spans the top, other two sit side by side */
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-grid .card:first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Profile: heading across the top, image beside the bio and facts */
+  .profile {
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+  }
+
+  .profile-header,
+  .works {
+    grid-column: 1 / -1;
+  }
+
+  .profile-figure {
+    grid-column: 1;
+    grid-row: 2 / span 2;
+  }
+
+  .profile-bio,
+  .profile-facts {
+    grid-column: 2;
+  }
+
+  /* Works grid: two columns */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* World clock page: two columns */
+  .clock-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Events page: mouse and keyboard side by side, log across the bottom */
+  .events-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .event-log-panel {
+    grid-column: 1 / -1;
+  }
+
+  /* Leap years page: four columns */
+  .leap-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- 3. LARGE DESKTOPS (1200px+) ---------- */
+@media (min-width: 75em) {
+
+  /* Keep content from stretching too wide */
+  main {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  h1 { font-size: 3rem; }
+
+  /* Home page: three cards in a row */
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card-grid .card:first-child {
+    grid-column: auto;   /* undo the tablet layout */
+  }
+
+  /* Profile: image | bio | facts, three columns */
+  .profile {
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 2rem;
+  }
+
+  .profile-figure {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .profile-bio {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .profile-facts {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  /* Works grid: four columns */
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* World clock page: four columns (one per city) */
+  .clock-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Leap years page: six columns */
+  .leap-list {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

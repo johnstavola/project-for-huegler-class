@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Required for responsive design: tells phones to use their real width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Favorites | Home</title>
+  <!-- base.css = formatting, layout.css = layout + media queries -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <!-- nav.js = button navigation (shared by every page); defer runs it after the HTML is parsed -->
+  <script src="js/nav.js" defer></script>
+</head>
+<body>
+  <!-- Site header with navigation (same on every page) -->
+  <header class="site-header">
+    <p class="site-title">My Favorites</p>
+    <nav aria-label="Main navigation">
+      <!-- Buttons replace links; js/nav.js loads the page named in data-page on click -->
+      <ul>
+        <li><button type="button" data-page="index.html">Home</button></li>
+        <li><button type="button" data-page="author.html">Author</button></li>
+        <li><button type="button" data-page="band.html">Band</button></li>
+        <li><button type="button" data-page="actor.html" aria-current="page">Actor</button></li>
+        <li><button type="button" data-page="worldclock.html">World Clock</button></li>
+        <li><button type="button" data-page="events.html">Events</button></li>
+        <li><button type="button" data-page="leapyears.html">Leap Years</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Intro section -->
+    <section class="intro">
+      <h1>Welcome to My Favorites</h1>
+      <p>A small site about the author, band, and actor I enjoy the most. Pick a card below to learn more.</p>
+    </section>
+
+    <!-- Cards: each card has a button (not a link) that loads its page -->
+    <section class="card-grid" aria-label="Featured favorites">
+      <article class="card">
+        <figure>
+          <picture>
+            <source srcset="img/jkrowling.webp" type="image/webp">
+            <img src="img/jkrowling.webp" alt="J.K. Rowling" loading="lazy">
+          </picture>
+          <figcaption>Favorite Author</figcaption>
+        </figure>
+        <h2>J.K. Rowling</h2>
+        <p>The creator of the Harry Potter series.</p>
+        <button type="button" class="card-button" data-page="author.html">View Author</button>
+      </article>
+
+      <article class="card">
+        <figure>
+          <picture>
+            <source srcset="img/coldplay.webp" type="image/webp">
+            <img src="img/coldplay.webp" alt="Coldplay" loading="lazy">
+          </picture>
+          <figcaption>Favorite Band</figcaption>
+        </figure>
+        <h2>Coldplay</h2>
+        <p>British rock band known for big, melodic anthems.</p>
+        <button type="button" class="card-button" data-page="band.html">View Band</button>
+      </article>
+
+      <article class="card">
+        <figure>
+          <picture>
+            <source srcset="img/jakegyllenhaal.webp" type="image/webp">
+            <img src="img/jakegyllenhaal.webp" alt="Jake Gyllenhaal" loading="lazy">
+          </picture>
+          <figcaption>Favorite Actor</figcaption>
+        </figure>
+        <h2>Jake Gyllenhaal</h2>
+        <p>An actor with a wide range, from drama to thrillers.</p>
+        <button type="button" class="card-button" data-page="actor.html">View Actor</button>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 My Favorites. Built for a responsive web design assignment.</p>
+  </footer>
+</body>
+</html>

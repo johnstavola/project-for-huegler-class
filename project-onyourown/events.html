@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events | My Favorites</title>
+
+  <!-- base.css = formatting, layout.css = layout + media queries -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <!-- nav.js = button navigation; events.js = mouse and keyboard demos -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/events.js" defer></script>
+</head>
+<body>
+  <!-- Site header with button navigation (same on every page) -->
+  <header class="site-header">
+    <p class="site-title">My Favorites</p>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><button type="button" data-page="index.html">Home</button></li>
+        <li><button type="button" data-page="author.html">Author</button></li>
+        <li><button type="button" data-page="band.html">Band</button></li>
+        <li><button type="button" data-page="actor.html" aria-current="page">Actor</button></li>
+        <li><button type="button" data-page="worldclock.html">World Clock</button></li>
+        <li><button type="button" data-page="events.html">Events</button></li>
+        <li><button type="button" data-page="leapyears.html">Leap Years</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Keyboard and Mouse Events</h1>
+      <p>Move, click, scroll, and type in the panels below to see the events the browser fires.</p>
+    </section>
+
+    <div class="events-layout">
+      <!-- Mouse panel -->
+      <section class="panel" aria-labelledby="mouse-heading">
+        <h2 id="mouse-heading">Mouse Events</h2>
+        <p class="panel-hint">Try moving, clicking, double-clicking, right-clicking, and scrolling in the box.</p>
+
+        <div id="mouse-area" class="mouse-area">Mouse area</div>
+
+        <dl class="readout">
+          <dt>Position in box</dt>
+          <dd id="mouse-position">-</dd>
+          <dt>Last button</dt>
+          <dd id="mouse-button">-</dd>
+          <dt>Scroll</dt>
+          <dd id="mouse-wheel">-</dd>
+        </dl>
+      </section>
+
+      <!-- Keyboard panel -->
+      <section class="panel" aria-labelledby="keyboard-heading">
+        <h2 id="keyboard-heading">Keyboard Events</h2>
+        <p class="panel-hint">Click the box and start typing. Try Shift, Ctrl, Alt, arrows, and Enter.</p>
+
+        <label for="key-input" class="panel-hint">Type here:</label>
+        <input type="text" id="key-input" class="key-input" autocomplete="off">
+
+        <p id="key-display" class="key-display" aria-live="polite">-</p>
+
+        <dl class="readout">
+          <dt>key</dt>
+          <dd id="key-value">-</dd>
+          <dt>code</dt>
+          <dd id="key-code">-</dd>
+          <dt>Modifiers held</dt>
+          <dd id="key-modifiers">-</dd>
+        </dl>
+      </section>
+
+      <!-- Event log -->
+      <section class="panel event-log-panel" aria-labelledby="log-heading">
+        <h2 id="log-heading">Event Log</h2>
+        <p class="panel-hint">The most recent events appear first. Mouse move is shown above instead, so it doesn't flood the log.</p>
+        <button type="button" id="clear-log" class="panel-button">Clear log</button>
+        <ul id="event-log" class="event-log"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 My Favorites. Built for a responsive web design assignment.</p>
+  </footer>
+</body>
+</html>

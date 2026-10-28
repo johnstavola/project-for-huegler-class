@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coldplay | Favorite Band</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <!-- nav.js = button navigation (shared by every page); defer runs it after the HTML is parsed -->
+  <script src="js/nav.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <p class="site-title">My Favorites</p>
+    <nav aria-label="Main navigation">
+      <!-- Buttons replace links; js/nav.js loads the page named in data-page on click -->
+      <ul>
+        <li><button type="button" data-page="index.html">Home</button></li>
+        <li><button type="button" data-page="author.html">Author</button></li>
+        <li><button type="button" data-page="band.html">Band</button></li>
+        <li><button type="button" data-page="actor.html" aria-current="page">Actor</button></li>
+        <li><button type="button" data-page="worldclock.html">World Clock</button></li>
+        <li><button type="button" data-page="events.html">Events</button></li>
+        <li><button type="button" data-page="leapyears.html">Leap Years</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="profile">
+      <header class="profile-header">
+        <h1>Coldplay</h1>
+        <p class="tagline">British rock band formed in London</p>
+      </header>
+
+      <figure class="profile-figure">
+        <picture>
+          <source srcset="img/coldplay.webp" type="image/webp">
+          <img src="img/coldplay.webp" alt="The members of Coldplay">
+        </picture>
+        <figcaption>Coldplay</figcaption>
+      </figure>
+
+      <section class="profile-bio">
+        <h2>About</h2>
+        <p>Coldplay formed in London in 1996 and is known for melodic, emotional songs and spectacular live shows. The band has sold tens of millions of albums worldwide.</p>
+        <p>Their sound has moved from quiet piano-driven rock to colorful, stadium-sized pop.</p>
+      </section>
+
+      <section class="profile-facts">
+        <h2>Quick Facts</h2>
+        <dl>
+          <dt>Formed</dt><dd>1996, London</dd>
+          <dt>Members</dt><dd>Chris Martin, Jonny Buckland, Guy Berryman, Will Champion</dd>
+          <dt>Genre</dt><dd>Alternative rock, pop rock</dd>
+        </dl>
+      </section>
+
+      <section class="works">
+        <h2>Selected Albums</h2>
+        <div class="grid">
+          <article class="grid-item"><h3>Parachutes</h3><p>2000</p></article>
+          <article class="grid-item"><h3>A Rush of Blood to the Head</h3><p>2002</p></article>
+          <article class="grid-item"><h3>X&amp;Y</h3><p>2005</p></article>
+          <article class="grid-item"><h3>Viva la Vida</h3><p>2008</p></article>
+          <article class="grid-item"><h3>Mylo Xyloto</h3><p>2011</p></article>
+          <article class="grid-item"><h3>Ghost Stories</h3><p>2014</p></article>
+          <article class="grid-item"><h3>A Head Full of Dreams</h3><p>2015</p></article>
+          <article class="grid-item"><h3>Everyday Life</h3><p>2019</p></article>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 My Favorites. Built for a responsive web design assignment.</p>
+  </footer>
+</body>
+</html>
