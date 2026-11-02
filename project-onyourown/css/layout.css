@@ -39,6 +39,30 @@ main {
   gap: 1rem;
 }
 
+/* Author page: explore buttons stacked (the snippet area sits below them) */
+.explore-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Author page: loaded books in one column (list is built by the snippet files) */
+.book-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Each loaded book: cover beside the text */
+.book {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
 /* World clock page: one column (container is built by js/modules/timeTools.js) */
 .clock-container {
   display: grid;
@@ -129,6 +153,26 @@ main {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Author page: explore section spans the full width under the works grid */
+  .explore {
+    grid-column: 1 / -1;
+  }
+
+  /* Author page: explore buttons side by side in a row */
+  .explore-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  /* Author page: loaded books in two columns with bigger covers */
+  .book-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .book {
+    grid-template-columns: 8rem 1fr;
+  }
+
   /* World clock page: two columns */
   .clock-container {
     grid-template-columns: repeat(2, 1fr);
@@ -194,6 +238,11 @@ main {
   /* Works grid: four columns */
   .grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Author page: loaded books in three columns */
+  .book-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   /* World clock page: four columns (one per city) */
