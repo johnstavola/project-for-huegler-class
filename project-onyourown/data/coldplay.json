@@ -1,0 +1,45 @@
+{
+  "band": "Coldplay",
+  "formed": 1996,
+  "origin": "London, England",
+  "genre": "Alternative rock",
+  "members": ["Chris Martin", "Jonny Buckland", "Guy Berryman", "Will Champion"],
+  "albums": [
+    {
+      "title": "Parachutes",
+      "year": 2000,
+      "topSingle": "Yellow",
+      "description": "The debut album that introduced the band to the world and won a Grammy for Best Alternative Music Album."
+    },
+    {
+      "title": "A Rush of Blood to the Head",
+      "year": 2002,
+      "topSingle": "Clocks",
+      "description": "A piano-driven second album that won the band another Grammy for Best Alternative Music Album."
+    },
+    {
+      "title": "X&Y",
+      "year": 2005,
+      "topSingle": "Fix You",
+      "description": "A huge third album that hit number one in many countries and cemented the band as stadium headliners."
+    },
+    {
+      "title": "Viva la Vida or Death and All His Friends",
+      "year": 2008,
+      "topSingle": "Viva la Vida",
+      "description": "Produced with Brian Eno, this album's title song became the band's first US number one single."
+    },
+    {
+      "title": "Mylo Xyloto",
+      "year": 2011,
+      "topSingle": "Paradise",
+      "description": "A bright, colorful concept album that includes a duet with Rihanna."
+    },
+    {
+      "title": "Ghost Stories",
+      "year": 2014,
+      "topSingle": "A Sky Full of Stars",
+      "description": "A quieter and more emotional album than the ones before it."
+    }
+  ]
+}
