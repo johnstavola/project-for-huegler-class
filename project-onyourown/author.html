@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="css/layout.css">
   <!-- nav.js = button navigation (shared by every page); defer runs it after the HTML is parsed -->
   <script src="js/nav.js" defer></script>
+  <!-- author.js = fetch() buttons that load the book snippets; defer runs it after the HTML is parsed -->
+  <script src="js/author.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -72,6 +74,21 @@
           <article class="grid-item"><h3>Harry Potter and the Half-Blood Prince</h3><p>2005</p></article>
           <article class="grid-item"><h3>Harry Potter and the Deathly Hallows</h3><p>2007</p></article>
           <article class="grid-item"><h3>The Casual Vacancy</h3><p>2012</p></article>
+        </div>
+      </section>
+
+      <!-- Explore section: each button fetch()es an HTML snippet into the content area below -->
+      <section class="explore">
+        <h2>Explore Her Books</h2>
+        <div class="explore-buttons">
+          <!-- data-snippet holds the file to load; js/author.js reads it on click -->
+          <button type="button" data-snippet="snippets/harrypotter.html">Harry Potter Series</button>
+          <button type="button" data-snippet="snippets/galbraith.html">Robert Galbraith Novels</button>
+          <button type="button" data-snippet="snippets/otherworks.html">Beyond Harry Potter</button>
+        </div>
+        <!-- Snippets load into this div; aria-live lets screen readers announce the change -->
+        <div id="snippet-area" class="snippet-area" aria-live="polite">
+          <p>Select a button above to learn more.</p>
         </div>
       </section>
     </article>
